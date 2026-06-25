@@ -18,3 +18,7 @@ MAPEAMENTO_ESTADOS = {
     '42': 'Santa Catarina',
     '43': 'Rio Grande do Sul'
 }
+
+# --- PARÂMETROS DO APRIORI ---
+SUPORTE_MIN = 0.02    # Padrão deve aparecer em pelo menos 2% dos atendimentos
+CONFIANCA_MIN = 0.40  # A regra deve estar certa em pelo menos 40% das vezes
