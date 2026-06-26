@@ -2,7 +2,7 @@ from service import extract, transform, analytics
 
 def main():
     print("\n" + "="*50)
-    print("INICIANDO PIPELINE UNIFICADO: SIASUS REGIONAL APRIORI")
+    print("INICIANDO PIPELINE UNIFICADO: SIASUS (MUNICÍPIOS RS)")
     print("="*50 + "\n")
     
     # 1. EXTRAÇÃO (Extract)
@@ -13,12 +13,12 @@ def main():
     df_fatos_pronto, dimensoes_prontas = transform.preparar_chaves(df_bruto_sul, dimensoes)
     df_enriquecido = transform.enriquecer_e_limpar(df_fatos_pronto, dimensoes_prontas)
     
-    # Seleção de colunas estratégicas para o Apriori
-    colunas_finais = ['ESTADO', 'DIAGNOSTICO', 'FAIXA_ETARIA', 'SEXO', 'CARATER_ATENDIMENTO']
+    # Seleção de colunas estratégicas para o Apriori (AGORA USANDO O MUNICÍPIO)
+    colunas_finais = ['MUNICIPIO_ATENDIMENTO', 'DIAGNOSTICO', 'FAIXA_ETARIA', 'SEXO', 'CARATER_ATENDIMENTO']
     df_final_processado = df_enriquecido[colunas_finais].dropna()
     
     # Salva um backup físico da base limpa
-    df_final_processado.to_csv('base_siasus_sul_limpa.csv', index=False)
+    df_final_processado.to_csv('base_siasus_municipios_rs_limpa.csv', index=False)
     
     # 3. MINERAÇÃO E ANÁLISE (Analytics)
     regras_geradas = analytics.minerar_regras(df_final_processado)
