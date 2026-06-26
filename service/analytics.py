@@ -25,23 +25,45 @@ def minerar_regras(df_analise):
     # Formatação amigável para leitura humana
     regras['antecedents'] = regras['antecedents'].apply(lambda x: ', '.join(list(x)))
     regras['consequents'] = regras['consequents'].apply(lambda x: ', '.join(list(x)))
+    
+    # Ordenamos as regras pelas mais fortes (maior lift) no topo
     regras = regras.sort_values(by='lift', ascending=False)
     
-    print(f"[Analytics] {len(regras)} regras criadas com sucesso.")
+    print(f"✔️ [Analytics] {len(regras)} regras criadas com sucesso.")
     return regras
 
 def plotar_resultados(regras):
     if regras is None or regras.empty:
         return
         
-    print("[Analytics] Gerando e salvando gráfico de dispersão...")
-    plt.figure(figsize=(10, 6))
+    print("[Analytics] Gerando e salvando gráfico de dispersão com etiquetas...")
+    plt.figure(figsize=(12, 7))
     scatter = plt.scatter(
         regras['support'], regras['confidence'], 
         c=regras['lift'], cmap='viridis', alpha=0.8, s=100
     )
+    
+    # --- INÍCIO DA MÁGICA DAS ETIQUETAS ---
+    # Pegamos apenas as 5 regras mais fortes (maior lift) para não poluir
+    top_regras = regras.head(5)
+    
+    for i, linha in top_regras.iterrows():
+        # Monta o texto que vai na etiqueta
+        texto = f"{linha['antecedents']} \n-> {linha['consequents']}"
+        
+        # Desenha a etiqueta e a setinha apontando para a bolinha
+        plt.annotate(
+            texto,
+            (linha['support'], linha['confidence']),
+            xytext=(10, 15), # Distância do texto para a bolinha
+            textcoords='offset points',
+            fontsize=8,
+            bbox=dict(boxstyle="round,pad=0.3", edgecolor="gray", facecolor="#FFF2CC", alpha=0.9), # Cor amarela suave
+            arrowprops=dict(arrowstyle="->", connectionstyle="arc3,rad=.2", color="gray")
+        )
+
     plt.colorbar(scatter, label='Lift (Força da Associação)')
-    plt.title('Regras Apriori: Geografia da Doença na Região Sul', fontsize=14, pad=15)
+    plt.title('Regras Apriori: Geografia da Doença na Região Sul (TOP 5 Destacadas)', fontsize=14, pad=15)
     plt.xlabel('Suporte (Frequência)', fontsize=12)
     plt.ylabel('Confiança (Precisão)', fontsize=12)
     plt.grid(True, linestyle='--', alpha=0.5)
