@@ -3,7 +3,7 @@ import pandas as pd
 
 def preparar_chaves(df_fatos, dimensoes):
     """Padroniza os tipos de dados das colunas-chave."""
-    print("🛠️ [Transform] Padronizando tipos de dados das chaves...")
+    print("[Transform] Padronizando tipos de dados das chaves...")
     
     # Chaves da Fato
     df_fatos['PA_MUNPCN'] = df_fatos['PA_MUNPCN'].astype(str)
@@ -32,7 +32,7 @@ def discretizar_idade(idade):
 
 def enriquecer_e_limpar(df_fatos, dimensoes):
     """Cruza os dados, cria variáveis geográficas e limpa inconsistências."""
-    print("🔄 [Transform] Iniciando cruzamento de dados (Merges)...")
+    print("[Transform] Iniciando cruzamento de dados (Merges)...")
     
     # 1. Cria a coluna do Estado baseado nos 2 primeiros dígitos do município do atendimento (PA_UFMUN)
     df_fatos['COD_UF'] = df_fatos['PA_UFMUN'].str[:2]
@@ -50,7 +50,7 @@ def enriquecer_e_limpar(df_fatos, dimensoes):
     ).rename(columns={'DS_CBO': 'OCUPACAO_MEDICO'})
 
     # 3. Limpeza de Dados
-    print("🧹 [Transform] Aplicando filtros de limpeza de dados...")
+    print("[Transform] Aplicando filtros de limpeza de dados...")
     # Remove diagnósticos nulos ou não informados comumente no SIASUS
     df_analise = df_analise[
         df_analise['DIAGNOSTICO'].notna() & 
