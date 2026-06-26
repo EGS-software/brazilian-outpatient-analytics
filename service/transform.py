@@ -5,7 +5,7 @@ def preparar_chaves(df_fatos, dimensoes):
     """Padroniza os tipos de dados das colunas-chave."""
     print("[Transform] Padronizando tipos de dados das chaves...")
     
-    # Chaves da Fato
+    # Chaves dos Fatos
     df_fatos['PA_MUNPCN'] = df_fatos['PA_MUNPCN'].astype(str)
     df_fatos['PA_PROC_ID'] = df_fatos['PA_PROC_ID'].astype(str)
     df_fatos['PA_CIDPRI'] = df_fatos['PA_CIDPRI'].astype(str)

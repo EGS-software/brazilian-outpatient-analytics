@@ -16,7 +16,7 @@ def carregar_dimensoes():
 
 def extrair_fatos_regiao_sul():
     """Lê as tabelas fato em chunks e filtra apenas a Região Sul."""
-    lista_chunks_sul = []
+    lista_chunks_sul: list[pd.DataFrame] = []
     print("[Extract] Iniciando leitura otimizada (Foco na Região Sul)...")
     
     for arquivo in config.ARQUIVOS_PRODUCAO:
@@ -33,7 +33,8 @@ def extrair_fatos_regiao_sul():
                 
                 if not chunk_filtrado.empty:
                     lista_chunks_sul.append(chunk_filtrado)
-                    
+    
+    # Concatena todos os chunks filtrados em um único DataFrame
     df_fatos_sul = pd.concat(lista_chunks_sul, ignore_index=True)
     print(f"[Extract] Extração concluída. Total de registros da Região Sul: {len(df_fatos_sul)}")
     return df_fatos_sul
