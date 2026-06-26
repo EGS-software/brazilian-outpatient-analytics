@@ -2,7 +2,7 @@ from service import extract, transform, analytics
 
 def main():
     print("\n" + "="*50)
-    print("🏁 INICIANDO PIPELINE UNIFICADO: SIASUS REGIONAL APRIORI")
+    print("INICIANDO PIPELINE UNIFICADO: SIASUS REGIONAL APRIORI")
     print("="*50 + "\n")
     
     # 1. EXTRAÇÃO (Extract)
@@ -26,17 +26,16 @@ def main():
     # 4. EXIBIÇÃO E SAÍDA
     print("\n" + "="*50)
     if regras_geradas is not None and not regras_geradas.empty:
-        print("🏆 TOP 10 REGRAS ENCONTRADAS (Ordenadas por LIFT):")
+        print("TOP 10 REGRAS ENCONTRADAS (Ordenadas por LIFT):")
         print("-" * 50)
         print(regras_geradas[['antecedents', 'consequents', 'support', 'confidence', 'lift']].head(10).to_string())
         print("-" * 50)
         
         # Gera o gráfico automático
         analytics.plotar_resultados(regras_geradas)
-        print("💾 Pipeline concluído! Imagem 'grafico_regras_apriori.png' gerada.")
+        print("Pipeline concluído! Imagem 'grafico_regras_apriori.png' gerada.")
     else:
         print("❌ Nenhuma regra forte foi encontrada com os parâmetros atuais.")
-        print("💡 Dica: Abra o 'config.py' e diminua os valores de SUPORTE_MIN ou CONFIANCA_MIN.")
     print("="*50 + "\n")
 
 if __name__ == '__main__':
