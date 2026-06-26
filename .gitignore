@@ -222,3 +222,6 @@ __marimo__/
 
 # Vscode
 .vscode/
+
+data
+.csv

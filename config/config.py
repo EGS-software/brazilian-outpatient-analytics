@@ -1,6 +1,6 @@
 """Configurações do projeto"""
 # Caminho base dos arquivos
-BASE_PATH = './brazilian-outpatient-analytics/data'
+BASE_PATH = './data'
 
 # Configurações de Processamento
 CHUNK_SIZE = 500000
