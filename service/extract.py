@@ -5,7 +5,7 @@ import gc  # Biblioteca para forçar a limpeza da memória RAM (Garbage Collecto
 
 def carregar_dimensoes():
     print("[Extract] Carregando tabelas de dimensão (versão otimizada em RAM)...")
-    # Usamos o 'usecols' para carregar APENAS as colunas que importam de cada dicionário.
+    
     dimensoes = {
         'procedimentos': pd.read_csv(os.path.join(config.BASE_PATH, 'TB_SIGTAW.csv'), encoding='latin1', usecols=['IP_COD', 'IP_DSCR'], dtype=str),
         'municipios': pd.read_csv(os.path.join(config.BASE_PATH, 'tb_municip.csv'), encoding='latin1', usecols=['CO_MUNICIP', 'DS_NOME', 'CO_UF'], dtype=str),
