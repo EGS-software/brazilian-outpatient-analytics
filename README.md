@@ -1,3 +1,7 @@
+Adicionado! Aqui está a versão atualizada do seu `README.md` com a seção de contribuidores incluída no final. Você pode copiar o bloco inteiro:
+
+---
+
 # 🏥 Pipeline de Mineração de Dados SIASUS - Região Sul (RS)
 
 ## 📋 Visão Geral
@@ -75,3 +79,10 @@ Após a execução bem-sucedida, o pipeline gera automaticamente dois artefatos 
 ## 🛠️ Notas de Desempenho
 
 Devido ao volume massivo dos arquivos do DataSUS, este projeto foi desenhado com foco em eficiência de memória RAM. O uso do parâmetro `chunksize` no Pandas e a invocação manual do *Garbage Collector* (`gc`) garantem que o sistema não sofra travamentos (Out of Memory) durante a etapa de extração.
+
+---
+
+## 🤝 Contribuidores
+
+* [@jvbenetti](https://www.google.com/search?q=https://github.com/jvbenetti)
+* [@Txagouuu](https://www.google.com/search?q=https://github.com/Txagouuu)
