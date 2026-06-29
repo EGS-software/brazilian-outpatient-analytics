@@ -1,7 +1,3 @@
-Adicionado! Aqui está a versão atualizada do seu `README.md` com a seção de contribuidores incluída no final. Você pode copiar o bloco inteiro:
-
----
-
 # 🏥 Pipeline de Mineração de Dados SIASUS - Região Sul (RS)
 
 ## 📋 Visão Geral
