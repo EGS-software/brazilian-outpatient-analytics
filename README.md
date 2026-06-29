@@ -84,5 +84,5 @@ Devido ao volume massivo dos arquivos do DataSUS, este projeto foi desenhado com
 
 ## 🤝 Contribuidores
 
-* [@jvbenetti](https://www.google.com/search?q=https://github.com/jvbenetti)
-* [@Txagouuu](https://www.google.com/search?q=https://github.com/Txagouuu)
+* [@jvbenetti](https://github.com/jvbenetti)
+* [@Txagouuu](https://github.com/Txagouuu)
